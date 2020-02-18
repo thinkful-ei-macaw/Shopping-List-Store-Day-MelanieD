@@ -1,3 +1,4 @@
+'use strict'
 const store = {
   items: [
     { id: cuid(), name: 'apples', checked: false },
@@ -6,6 +7,7 @@ const store = {
     { id: cuid(), name: 'bread', checked: false }
   ],
   hideCheckedItems: false
+  
 };
 
 const generateItemElement = function (item) {
@@ -25,6 +27,9 @@ const generateItemElement = function (item) {
         </button>
         <button class='shopping-item-delete js-item-delete'>
           <span class='button-label'>delete</span>
+        </button>
+        <button class='shopping-item-edit js-item-edit'>
+          <span class='cutton-label'>edit</span>
         </button>
       </div>
     </li>`;
@@ -76,6 +81,8 @@ const handleNewItemSubmit = function () {
   });
 };
 
+
+
 const toggleCheckedForListItem = function (id) {
   const foundItem = store.items.find(item => item.id === id);
   foundItem.checked = !foundItem.checked;
@@ -113,7 +120,15 @@ const deleteListItem = function (id) {
   // a removeCount of 1.
   store.items.splice(index, 1);
 };
+const editListItem = function (id) {
 
+}
+
+const handleEditItemClicked = function () {
+  $('.js-shopping-list').on('click', '.js-item-edit', event => {
+
+  })
+}
 const handleDeleteItemClicked = function () {
   // Like in `handleItemCheckClicked`, 
   // we use event delegation.
